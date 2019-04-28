@@ -8,6 +8,7 @@ Go to http://shell.azure.com and run the following (Or run locally using the [Az
     (venv)$ source ./env.sh
     (venv)$ pip install -r requirements.txt
 # Create a PostgreSQL database    
+    (venv)$ az extension add --name db-up
     (venv)$ az postgres up -d pollsdb -u manager -p <secretpassword>
     (venv)$ export DBHOST="<servername>.postgres.database.azure.com"
     (venv)$ export DBUSER="manager@<servername>"
