@@ -18,7 +18,7 @@ Go to http://shell.azure.com and run the following (Or run locally using the [Az
     (venv)$ python manage.py createsuperuser
 # Deploy the Django App and connect it to the PostgreSQL database     
     (venv)$ az webapp up --name <enter a unique name for your app> --location centralus
-    (venv)$ az webapp config appsettings set --name <from above> ---resource-group <from above> --settings DBHOST=$DBHOST DBUSER=$DBUSER DBPASS=$DBPASS DBNAME=$DBNAME 
+    (venv)$ az webapp config appsettings set --name <from above> --resource-group <from above> --settings DBHOST=$DBHOST DBUSER=$DBUSER DBPASS=$DBPASS DBNAME=$DBNAME 
 
 For more on Azure CLI, go to http://aka.ms/cli (az postgres up: http://aka.ms/azpostgresup, az webapp up: http://aka.ms/azwebappup)
 
