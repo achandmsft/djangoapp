@@ -3,23 +3,23 @@ Go to http://shell.azure.com and run the following (Or run locally using the [Az
 # Create a virtual environment    
     $ git clone https://github.com/achandmsft/djangoapp
     $ cd djangoapp
-    $ python3 -m venv venv
-    $ source venv/bin/activate
-    (venv)$ source ./env.sh
-    (venv)$ pip install -r requirements.txt
+    $ python3 -m venv env
+    $ source env/bin/activate
+    (env)$ source ./env.sh
+    (env)$ pip install -r requirements.txt
 # Create a PostgreSQL database    
-    (venv)$ az extension add --name db-up
-    (venv)$ az postgres up -d pollsdb -u manager -p <secretpassword>
-    (venv)$ export DBHOST="<servername>.postgres.database.azure.com"
-    (venv)$ export DBUSER="manager@<servername>"
-    (venv)$ export DBNAME="pollsdb"
-    (venv)$ export DBPASS="<secretpassword>"
+    (env)$ az extension add --name db-up
+    (env)$ DBPASS=$(openssl rand -hex 12)'A1!'
+    (env)$ az postgres up -d pollsdb -u manager -p $DBPASS
+    (env)$ export DBHOST="<servername>.postgres.database.azure.com"
+    (env)$ export DBUSER="manager@<servername>"
+    (env)$ export DBNAME="pollsdb"
 # Configure the Django App   
-    (venv)$ python manage.py migrate
-    (venv)$ python manage.py createsuperuser
+    (env)$ python manage.py migrate
+    (env)$ python manage.py createsuperuser
 # Deploy the Django App and connect it to the PostgreSQL database     
-    (venv)$ az webapp up --name <enter a unique name for your app> --location centralus
-    (venv)$ az webapp config appsettings set --name <from above> --resource-group <from above> --settings DBHOST=$DBHOST DBUSER=$DBUSER DBPASS=$DBPASS DBNAME=$DBNAME 
+    (env)$ az webapp up --name <enter a unique name for your app> --location centralus
+    (env)$ az webapp config appsettings set --name <from above> --resource-group <from above> --settings DBHOST=$DBHOST DBUSER=$DBUSER DBPASS=$DBPASS DBNAME=$DBNAME 
 
 For more on Azure CLI, go to http://aka.ms/cli (az postgres up: http://aka.ms/azpostgresup, az webapp up: http://aka.ms/azwebappup)
 
