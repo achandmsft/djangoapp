@@ -6,11 +6,11 @@ Go to http://shell.azure.com and run the following (Or run locally using the [Az
     $ cd djangoapp
     $ python3 -m venv env
     $ source env/bin/activate
-    (env)$ source ./env.sh
     (env)$ pip install -r requirements.txt
 
 # Create a PostgreSQL database    
     (env)$ az extension add --name db-up
+    (env)$ source ./env.sh
     (env)$ DBPASS=$(openssl rand -hex 12)'A1!'
     (env)$ az postgres up -d pollsdb -u manager -p $DBPASS
     (env)$ export DBHOST="<servername>.postgres.database.azure.com"
