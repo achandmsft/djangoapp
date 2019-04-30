@@ -23,6 +23,7 @@ Go to http://shell.azure.com and run the following (Or run locally using the [Az
 
 # Deploy the Django App and connect it to the PostgreSQL database     
 The name for your app must be globally unique as it will prefix the website address: http://yourapp.azurewebsites.net/ 
+
     (env)$ az webapp up --name <enter a unique name for your app> --location centralus
     (env)$ az webapp config appsettings set --name <from above> --resource-group <from above> --settings DBHOST=$DBHOST DBUSER=$DBUSER DBPASS=$DBPASS DBNAME=$DBNAME 
 
